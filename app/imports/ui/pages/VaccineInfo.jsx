@@ -44,13 +44,13 @@ const VaccineInfo = () => {
     },
   ];
 
-  const pfizerPanels = [
+  const panels = [
     {
       key: 'general-info',
       title: 'General Information',
       content: {
         content: (
-          <VaccineInfoTable type={generalInfo} vaccineName={'pfizer'} />
+          <VaccineInfoTable type={generalInfo} />
         ),
       },
     },
@@ -59,7 +59,7 @@ const VaccineInfo = () => {
       title: 'Eligibility',
       content: {
         content: (
-          <VaccineInfoTable type={eligibility} vaccineName={'pfizer'} />
+          <VaccineInfoTable type={eligibility} />
         ),
       },
     },
@@ -68,7 +68,7 @@ const VaccineInfo = () => {
       title: 'Possible Side Effects',
       content: {
         content: (
-          <VaccineInfoTable type={possibleSideEffects} vaccineName={'pfizer'} />
+          <VaccineInfoTable type={possibleSideEffects} />
         ),
       },
     },
@@ -77,50 +77,19 @@ const VaccineInfo = () => {
       title: 'More Information',
       content: {
         content: (
-          <a href='https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/Pfizer-BioNTech.html'>
-            Pfizer-BioNTech COVID-19 Vaccine Overview and Safety (CDC)
-          </a>
-        ),
-      },
-    },
-  ];
-
-  const modernaPanels = [
-    {
-      key: 'general-info',
-      title: 'General Information',
-      content: {
-        content: (
-          <VaccineInfoTable type={generalInfo} vaccineName={'moderna'} />
-        ),
-      },
-    },
-    {
-      key: 'eligibility',
-      title: 'Eligibility',
-      content: {
-        content: (
-          <VaccineInfoTable type={eligibility} vaccineName={'moderna'} />
-        ),
-      },
-    },
-    {
-      key: 'possible-side-effects',
-      title: 'Possible Side Effects',
-      content: {
-        content: (
-          <VaccineInfoTable type={possibleSideEffects} vaccineName={'moderna'} />
-        ),
-      },
-    },
-    {
-      key: 'more-information',
-      title: 'More Information',
-      content: {
-        content: (
-          <a href='https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/Moderna.html'>
-            Moderna COVID-19 Vaccine Overview and Safety (CDC)
-          </a>
+          <Grid columns={3}>
+            <Grid.Column/>
+            <Grid.Column>
+              <a href='https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/Pfizer-BioNTech.html'>
+                Pfizer-BioNTech COVID-19 Vaccine Overview and Safety (CDC)
+              </a>
+            </Grid.Column>
+            <Grid.Column>
+              <a href='https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/Moderna.html'>
+                Moderna COVID-19 Vaccine Overview and Safety (CDC)
+              </a>
+            </Grid.Column>
+          </Grid>
         ),
       },
     },
@@ -128,18 +97,13 @@ const VaccineInfo = () => {
 
   return (
     <Container style={{ padding: 20, margin: 20 }}>
-      <Grid container divided columns={2}>
+      <Grid container columns={3}>
+        <Grid.Column/>
         <Grid.Column style={columnStyle}>
           <Header
             size='huge'
             content='PFIZER-BIONTECH'
             textAlign='center'
-          />
-          <Accordion
-            fluid
-            styled
-            panels={pfizerPanels}
-            defaultActiveIndex={0}
           />
         </Grid.Column>
         <Grid.Column style={columnStyle}>
@@ -148,13 +112,15 @@ const VaccineInfo = () => {
             content='MODERNA'
             textAlign='center'
           />
+        </Grid.Column>
+        <Grid.Row>
           <Accordion
             fluid
             styled
-            panels={modernaPanels}
+            panels={panels}
             defaultActiveIndex={0}
           />
-        </Grid.Column>
+        </Grid.Row>
       </Grid>
 
       <Grid container style={{ padding: '1rem' }} textAlign='center'>
