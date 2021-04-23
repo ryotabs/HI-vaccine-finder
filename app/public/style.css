@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+.landing-background {
+    background: url('images/landing-page-background.jpg') no-repeat center center fixed;
+    -webkit-background-size: 100%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 1000px;
+}
+
+.landing-text-style {
+    font-family: 'Lora', serif;
+    font-size: 25px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.header-landing {
+    font-family: 'Lora', serif;
+    font-size: 75px;
+    text-align: center;
+    padding-top: 300px;
+    color: whitesmoke;
+}
