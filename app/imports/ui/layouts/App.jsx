@@ -13,7 +13,7 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import VaccineInfo from '../pages/VaccineInfo';
 import faqPage from '../pages/faqPage';
-
+import vaccineForm from '../pages/vaccineForm';
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
   render() {
@@ -28,7 +28,7 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <Route path="/vaccine-info" component={VaccineInfo}/>
             <Route path="/faqPage" component={faqPage}/>
-            {/* <Route path="/vaccine-form" component={vaccineform}/> */}
+            <Route path="/vaccine-form" component={vaccineForm}/>
             <Route component={NotFound}/>
           </Switch>
         </div>
