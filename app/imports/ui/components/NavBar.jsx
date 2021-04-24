@@ -16,7 +16,7 @@ class NavBar extends React.Component {
         ) : ''}
         <Menu.Item as={NavLink} exact to="/">Home</Menu.Item>
         <Menu.Item as={NavLink} exact to="/vaccine-info">Vaccine Info</Menu.Item>
-        <Menu.Item as={NavLink} exact to="/faq">FAQ</Menu.Item>
+        <Menu.Item as={NavLink} exact to="/faqPage">FAQ</Menu.Item>
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
             <Dropdown id="login-dropdown" text="Login" pointing="top right" icon={'user'}>
