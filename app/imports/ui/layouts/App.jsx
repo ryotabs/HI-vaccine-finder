@@ -12,30 +12,29 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import VaccineInfo from '../pages/VaccineInfo';
-import vaccineForm from '../pages/vaccineForm';
+import faqPage from '../pages/faqPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div className={'landing-background'}>
-          <NavBar/>
-          <Switch>
-            <Route exact path="/" component={Landing}/>
-            <Route path="/signin" component={Signin}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/signout" component={Signout}/>
-            <Route path="/vaccine-info" component={VaccineInfo}/>
-            {/* Change the component when pages are made*/}
-            {/* <Route path="/faq" component={faq}/> */}
-            { <Route path="/vaccine-form" component={vaccineForm}/> }
-            <Route component={NotFound}/>
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <div className={'landing-background'}>
+                    <NavBar/>
+                    <Switch>
+                        <Route exact path="/" component={Landing}/>
+                        <Route path="/signin" component={Signin}/>
+                        <Route path="/signup" component={Signup}/>
+                        <Route path="/signout" component={Signout}/>
+                        <Route path="/vaccine-info" component={VaccineInfo}/>
+                        <Route path="/faqPage" component={faqPage}/>
+                        {/* <Route path="/vaccine-form" component={vaccineform}/> */}
+                        <Route component={NotFound}/>
+                    </Switch>
+                </div>
+            </Router>
+        );
+    }
 }
 
 /**
@@ -44,16 +43,16 @@ class App extends React.Component {
  * @param {any} { component: Component, ...rest }
  */
 const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      const isLogged = Meteor.userId() !== null;
-      return isLogged ?
-        (<Component {...props} />) :
-        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-        );
-    }}
-  />
+    <Route
+        {...rest}
+        render={(props) => {
+            const isLogged = Meteor.userId() !== null;
+            return isLogged ?
+                (<Component {...props} />) :
+                (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+                );
+        }}
+    />
 );
 
 /**
@@ -62,29 +61,29 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
  * @param {any} { component: Component, ...rest }
  */
 const AdminProtectedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      const isLogged = Meteor.userId() !== null;
-      const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-      return (isLogged && isAdmin) ?
-        (<Component {...props} />) :
-        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-        );
-    }}
-  />
+    <Route
+        {...rest}
+        render={(props) => {
+            const isLogged = Meteor.userId() !== null;
+            const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+            return (isLogged && isAdmin) ?
+                (<Component {...props} />) :
+                (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+                );
+        }}
+    />
 );
 
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  location: PropTypes.object,
+    component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    location: PropTypes.object,
 };
 
 // Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  location: PropTypes.object,
+    component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    location: PropTypes.object,
 };
 
 export default App;
