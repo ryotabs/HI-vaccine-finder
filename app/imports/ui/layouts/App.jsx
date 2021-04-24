@@ -12,6 +12,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import VaccineInfo from '../pages/VaccineInfo';
+import faqPage from '../pages/faqPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -26,7 +27,7 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <Route path="/vaccine-info" component={VaccineInfo}/>
-            {/*<Route path="/faq" component={faq}/> */}
+            <Route path="/faqPage" component={faqPage}/>
             {/* <Route path="/vaccine-form" component={vaccineform}/> */}
             <Route component={NotFound}/>
           </Switch>
