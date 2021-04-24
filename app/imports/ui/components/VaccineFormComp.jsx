@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Checkbox, Button } from 'semantic-ui-react';
+import Calendar from 'react-calendar';
 
 class VaccineFormComp extends React.Component {
     state = {}
@@ -10,6 +11,9 @@ class VaccineFormComp extends React.Component {
       const { value } = this.state;
       return (
         <Form>
+          <Calendar
+            value={value}
+          />
           <Form.Group inline>
             <label>Are you feeling sick today?</label>
             <Form.Radio
