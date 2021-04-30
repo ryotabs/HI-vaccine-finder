@@ -64,7 +64,7 @@ class faqPage extends React.Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 2}>
                   <p>
-                                    Go the the home page of the site and click the "Get Started" button to begin your form filling process.
+                                    Go the the home page of the site and click the &quot;Get Started&quot; button to begin your form filling process.
                   </p>
                 </Accordion.Content>
               </Accordion>
@@ -97,8 +97,8 @@ class faqPage extends React.Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 4}>
                   <p>
-                                   Click the "Login" button with the user icon on the top right of the web page, and
-                      then select "Sign Up" from the dropdown to register an account with the site.
+                                   Click the &quot;Login&quot; button with the user icon on the top right of the web page, and
+                      then select &quot;Sign Up&quot; from the dropdown to register an account with the site.
                   </p>
                 </Accordion.Content>
 

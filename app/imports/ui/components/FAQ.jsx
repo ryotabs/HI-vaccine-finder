@@ -16,8 +16,8 @@ const FAQ = (props) => (
   </Table>
 );
 
-VaccineInfoTable.propTypes = {
+FAQ.propTypes = {
   type: PropTypes.array.isRequired,
 };
 
-export default VaccineInfoTable;
+export default FAQ;
