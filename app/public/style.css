@@ -6,7 +6,11 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 1000px;
+    height: 1500px;
+}
+
+.vaccine-form {
+    padding-top: 100px
 }
 
 .landing-text-style {

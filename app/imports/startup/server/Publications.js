@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { FormCollections } from "../../api/stuff/FormCollection";
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -28,4 +29,8 @@ Meteor.publish(null, function () {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
   }
   return this.ready();
+});
+
+Meteor.publish('FormCollections', function publish() {
+  return FormCollections.collection.find();
 });

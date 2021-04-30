@@ -10,9 +10,10 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import AddStuff from '../pages/AddStuff';
 import VaccineInfo from '../pages/VaccineInfo';
 import faqPage from '../pages/faqPage';
-import vaccineForm from '../pages/vaccineForm';
+import VaccineFormComp from '../pages/VaccineFormComp';
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
   render() {
@@ -25,9 +26,10 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
+            <Route path="/AddStuff" component={AddStuff}/>
             <Route path="/vaccine-info" component={VaccineInfo}/>
             <Route path="/faqPage" component={faqPage}/>
-            <Route path="/vaccine-form" component={vaccineForm}/>
+            <Route path="/vaccine-form" component={VaccineFormComp}/>
             <Route component={NotFound}/>
           </Switch>
         </div>
