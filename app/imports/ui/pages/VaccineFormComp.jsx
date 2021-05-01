@@ -4,6 +4,9 @@ import { AutoForm, ErrorsField, SelectField, SubmitField } from 'uniforms-semant
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
+import DatePicker from 'react-datepicker';
+import Calendar from 'react-calendar';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { Meteor } from 'meteor/meteor';
 import { FormCollections } from '../../api/stuff/FormCollection';
 
@@ -73,6 +76,9 @@ class VaccineFormComp extends React.Component {
     return (
       <Container className='vaccine-form'>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+          <Segment>
+            <Calendar/>
+          </Segment>
           <Segment>
             <SelectField
               checkboxes
