@@ -4,10 +4,12 @@ import { AutoForm, ErrorsField, SelectField, SubmitField } from 'uniforms-semant
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import DatePicker from 'react-datepicker';
 import Calendar from 'react-calendar';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { NavLink, Redirect } from 'react-router-dom';
 import { FormCollections } from '../../api/stuff/FormCollection';
 
 const formSchema = new SimpleSchema({
@@ -75,6 +77,12 @@ class VaccineFormComp extends React.Component {
 
   render() {
     let fRef = null;
+    if (this.props.formCollections.length === 1) {
+      return (
+        <Redirect is={NavLink} exact to="/profile-page"/>
+      );
+    }
+
     return (
       <Container className='vaccine-form'>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
@@ -169,4 +177,21 @@ class VaccineFormComp extends React.Component {
   }
 }
 
-export default VaccineFormComp;
+VaccineFormComp.propTypes = {
+  formCollections: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+export default withTracker(() => {
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe(FormCollections.userPublicationName);
+  // Determine if the subscription is ready
+  const ready = subscription.ready();
+  // Get the Stuff documents
+  const formCollections = FormCollections.collection.find({}).fetch();
+  return {
+    formCollections,
+    ready,
+  };
+})(VaccineFormComp);
