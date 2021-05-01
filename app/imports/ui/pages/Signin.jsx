@@ -45,9 +45,11 @@ export default class Signin extends React.Component {
       <Container id="signin-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
-              Login to your account
-            </Header>
+            <div className="title">
+              <Header as="h2" textAlign="center">
+                Login to your account
+              </Header>
+            </div>
             <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input

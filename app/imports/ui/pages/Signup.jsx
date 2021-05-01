@@ -42,9 +42,11 @@ class Signup extends React.Component {
       <Container id="signup-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
-              Register your account
-            </Header>
+            <div className="title">
+              <Header as="h2" textAlign="center">
+                Register your account
+              </Header>
+            </div>
             <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input

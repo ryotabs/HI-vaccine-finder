@@ -1,8 +1,12 @@
 import React from 'react';
-import { Accordion, Button, Container, Grid, Header, Message, Popup } from 'semantic-ui-react';
+import { Accordion, Button, Container, Grid, Header, Message } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import VaccineInfoTable from '../components/VaccineInfoTable';
 
 const VaccineInfo = () => {
+
+  const message1 = () => swal('Feature not Implemented', 'In the future you will be to the forms page.');
+
   const columnStyle = { padding: '1rem' };
 
   const generalInfo = [
@@ -99,20 +103,24 @@ const VaccineInfo = () => {
     <Container style={{ padding: 20, margin: 20 }}>
       <Grid container columns={3}>
         <Grid.Column/>
-        <Grid.Column style={columnStyle}>
-          <Header
-            size='huge'
-            content='PFIZER-BIONTECH'
-            textAlign='center'
-          />
-        </Grid.Column>
-        <Grid.Column style={columnStyle}>
-          <Header
-            size='huge'
-            content='MODERNA'
-            textAlign='center'
-          />
-        </Grid.Column>
+        <div className="title">
+          <Grid.Column style={columnStyle}>
+            <Header
+              size='huge'
+              content='PFIZER-BIONTECH'
+              textAlign='center'
+            />
+          </Grid.Column>
+        </div>
+        <div className="title">
+          <Grid.Column style={columnStyle}>
+            <Header
+              size='huge'
+              content='MODERNA'
+              textAlign='center'
+            />
+          </Grid.Column>
+        </div>
         <Grid.Row>
           <Accordion
             fluid
@@ -124,17 +132,11 @@ const VaccineInfo = () => {
       </Grid>
 
       <Grid container style={{ padding: '1rem' }} textAlign='center'>
-        <Popup
-          content='This will send you to form'
-          on='click'
-          pinned
-          trigger={
-            <Button
-              size='huge'
-              content='Schedule An Appointment Now'
-              color='teal'
-            />
-          }
+        <Button
+          onClick={message1}
+          size='huge'
+          content='Schedule An Appointment Now'
+          color='teal'
         />
       </Grid>
 
