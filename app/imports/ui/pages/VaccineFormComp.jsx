@@ -42,6 +42,8 @@ class VaccineFormComp extends React.Component {
       dermalFillers,
     } = data;
 
+    console.log(data);
+
     const owner = Meteor.user().username;
     FormCollections.collection.insert({
       owner,
@@ -101,7 +103,6 @@ class VaccineFormComp extends React.Component {
                   { label: 'Polyethylene glycol', value: 'Polyethylene glycol' },
                   { label: 'Polysorbate', value: 'Polysorbate' },
                   { label: 'A previous vaccine dose', value: 'Previous vaccine dose' },
-                  { label: 'A vaccine or injectable therapy containing multiple components', value: 'A vaccine or injectable therapy containing multiple components' },
                   { label: 'N/A', value: 'N/A' },
                 ]}
             />
