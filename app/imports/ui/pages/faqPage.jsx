@@ -1,5 +1,6 @@
 import React from 'react';
-import { Accordion, Button, Container, Icon, Header, Grid, Popup, Input } from 'semantic-ui-react';
+import { Accordion, Button, Container, Icon, Header, Grid, Input } from 'semantic-ui-react';
+import swal from 'sweetalert';
 
 class faqPage extends React.Component {
 
@@ -13,14 +14,24 @@ class faqPage extends React.Component {
       this.setState({ activeIndex: newIndex });
     };
 
+    message1() {
+      swal('Feature not Implemented', 'In the future you will be directed to a custom question form page.');
+    }
+
+    message2() {
+      swal('Feature not Implemented', 'In the future the search bar will filter questions relevant to input.');
+    }
+
     render() {
       const { activeIndex } = this.state;
       return (
         <Container style={{ padding: 20, margin: 20 }}>
-          <Header as='h1' textAlign='center'>Frequently Asked Questions</Header>
+          <div className="title">
+            <Header as='h1' textAlign='center'>Frequently Asked Questions</Header>
+          </div>
           <Grid divided='vertically'>
             <Grid.Row columns={1} centered>
-              <Input fluid icon='search' placeholder='Search FAQ...' />
+              <Input onChange={this.message2} fluid icon='search' placeholder='Search FAQ...' />
             </Grid.Row>
             <Grid.Row columns={1}>
               <Accordion fluid styled>
@@ -168,17 +179,11 @@ class faqPage extends React.Component {
               </Accordion>
             </Grid.Row>
             <Grid.Row centered columns={1}>
-              <Popup
-                content='This will trigger a question submit form.'
-                on='click'
-                pinned
-                trigger={
-                  <Button
-                    size='huge'
-                    content='Still have questions?'
-                    color='teal'
-                  />
-                }
+              <Button
+                onClick={this.message1}
+                size='huge'
+                content='Still have questions?'
+                color='teal'
               />
             </Grid.Row>
           </Grid>
