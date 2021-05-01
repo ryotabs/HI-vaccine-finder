@@ -1,18 +1,19 @@
 import React from 'react';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Form } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SelectField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import Calendar from 'react-calendar';
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import DatePicker from 'react-datepicker';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink, Redirect } from 'react-router-dom';
 import { FormCollections } from '../../api/stuff/FormCollection';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const formSchema = new SimpleSchema({
+  vaccineDate: Date,
   feelSick: Boolean,
   vaccinated: Boolean,
   vaccineShot: [{ type: String, optional: true }],
@@ -33,6 +34,7 @@ class VaccineFormComp extends React.Component {
 
   submit(data, formRef) {
     const {
+      vaccineDate,
       feelSick,
       vaccinated,
       vaccineShot,
@@ -52,6 +54,7 @@ class VaccineFormComp extends React.Component {
     const owner = Meteor.user().username;
     FormCollections.collection.insert({
       owner,
+      vaccineDate,
       feelSick,
       vaccinated,
       vaccineShot,
@@ -75,6 +78,10 @@ class VaccineFormComp extends React.Component {
     });
   }
 
+  handleDate = (date = new Date()) => {
+    this.setState({ vaccineDate: date });
+  }
+
   render() {
     let fRef = null;
     if (this.props.formCollections.length === 1) {
@@ -87,9 +94,15 @@ class VaccineFormComp extends React.Component {
       <Container className='vaccine-form'>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
           <Segment>
-            <Calendar/>
-          </Segment>
-          <Segment>
+            <Form.Input fluid required label='Desired date of vaccination'>
+              <DatePicker
+                isClearable
+                todayButton='Today'
+                onChange={this.handleDate}
+                showTimeSelect
+                placeholderText='Vaccination date'
+                dateFormat='MM/dd/yyyy hh:mm aa'/>
+            </Form.Input>
             <SelectField
               checkboxes
               label='Are you feeling sick today?'
