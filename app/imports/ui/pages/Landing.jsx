@@ -34,7 +34,7 @@ class Landing extends React.Component {
             <div className="landing-text-style">
               <h1 className='header-landing'>Vaccine Finder</h1>
               <p>Welcome to HI vaccine finder, the fastest and easiest way to find a legible vaccine!</p>
-              <Button size='huge' color='green' as={NavLink} exact to="/vaccine-form">Get Started</Button>
+              <Button size='huge' color='green' as={NavLink} exact to="/profile-page">Get Started</Button>
             </div>
           </Container>
         </div>
